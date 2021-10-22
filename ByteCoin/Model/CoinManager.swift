@@ -9,9 +9,9 @@
 import Foundation
 
 struct CoinManager {
-    let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
+    let currencyArray = ["USD", "AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","ZAR"]
 
-    func fetchData(from currency1: String, to currency2: String) {
+    func getCoinQuotation(for currency1: String, in currency2: String) {
         let url = "\(Env.BASE_URL)/\(currency1)/\(currency2)?apikey=\(Env.API_KEY)"
         fetchCurrencyQuotation(url)
     }
@@ -25,7 +25,9 @@ struct CoinManager {
                 } else {
                     if let safeData = data {
                         let decodedData = decodeData(safeData)
-                        print(decodedData!)
+                        DispatchQueue.main.async {
+                            print(decodedData!)
+                        }
                     }
                 }
             }

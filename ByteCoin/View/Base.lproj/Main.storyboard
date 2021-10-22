@@ -97,6 +97,11 @@
                             <constraint firstItem="ct2-jk-pgH" firstAttribute="bottom" secondItem="CjI-yV-vnC" secondAttribute="bottom" id="tCZ-GN-qxe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currency" destination="N2a-Ax-iRV" id="gKb-ES-0tp"/>
+                        <outlet property="pickerView" destination="ct2-jk-pgH" id="xaP-xf-0RC"/>
+                        <outlet property="quotation" destination="N2a-Ax-iRV" id="mZr-LL-ZCm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
