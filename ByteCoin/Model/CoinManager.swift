@@ -31,7 +31,6 @@ struct CoinManager {
                     if let safeData = data {
                         let decodedData = decodeData(safeData)
                         DispatchQueue.main.async {
-                            print(decodedData!)
                             if let safeData = decodedData {
                                 self.delegate?.didUpdateQuotation(self, quotation: safeData.rate)
                             }
