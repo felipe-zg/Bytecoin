@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var currency: UILabel!
-    @IBOutlet weak var quotation: UILabel!
     let coinManager = CoinManager()
     var inCurrency = "USD"
     var forCurrency = "USD"
@@ -48,7 +46,13 @@ extension ViewController: UIPickerViewDelegate {
         }else {
             forCurrency = coinManager.currencyArray[row]
         }
-        
         coinManager.getCoinQuotation(for: forCurrency, in: inCurrency)
+    }
+}
+
+
+extension ViewController: CoinManagerDelegate {
+    func didUpdateQuotation(_ coinManager: CoinManager, quotation: Double) {
+       print(quotation)
     }
 }

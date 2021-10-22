@@ -8,7 +8,12 @@
 
 import Foundation
 
+protocol CoinManagerDelegate {
+    func didUpdateQuotation(_ coinManager: CoinManager, quotation: Double)
+}
+
 struct CoinManager {
+    var delegate: CoinManagerDelegate?
     let currencyArray = ["USD", "AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","ZAR"]
 
     func getCoinQuotation(for currency1: String, in currency2: String) {
@@ -27,6 +32,9 @@ struct CoinManager {
                         let decodedData = decodeData(safeData)
                         DispatchQueue.main.async {
                             print(decodedData!)
+                            if let safeData = decodedData {
+                                self.delegate?.didUpdateQuotation(self, quotation: safeData.rate)
+                            }
                         }
                     }
                 }
